@@ -1,0 +1,215 @@
+{
+	"info": {
+		"_postman_id": "f82d6c7e-d065-4cf3-a637-80c75f891ea4",
+		"name": "Hospital API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/credoweb-api/api/user/get_users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"credoweb-api",
+						"api",
+						"user",
+						"get_users"
+					]
+				},
+				"description": "GET request with URL: /api/user/get_users .\r\nThe request will return an object with all users created"
+			},
+			"response": []
+		},
+		{
+			"name": "Search users by workplace and title",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/credoweb-api/api/user/get_users_by_param?{workplace/title}={int/string}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"credoweb-api",
+						"api",
+						"user",
+						"get_users_by_param"
+					],
+					"query": [
+						{
+							"key": "{workplace/title}",
+							"value": "{int/string}"
+						}
+					]
+				},
+				"description": "GET request with URL: /api/user/get_users_by_param?{workplace/title}={int/string}\r\nThe request will return an object with all users created and having the requested workplace or title."
+			},
+			"response": []
+		},
+		{
+			"name": "Get all hospitals",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/credoweb-api/api/hospital/get_hospitals",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"credoweb-api",
+						"api",
+						"hospital",
+						"get_hospitals"
+					]
+				},
+				"description": "GET request with URL: /api/hospital/get_hospitals\r\nIt will return an object with all hospitals including their employees count.\r\n\r\nOptional: If you provide a parameter ?order={ASC/DESC} the object will be sorted by the requested way."
+			},
+			"response": []
+		},
+		{
+			"name": "Update user",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/credoweb-api/api/user/update_user?id={int}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"credoweb-api",
+						"api",
+						"user",
+						"update_user"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "{int}"
+						},
+						{
+							"key": "created_at",
+							"value": "2021-04-15",
+							"disabled": true
+						}
+					]
+				},
+				"description": "PUT request with URL: /api/user/update_user?id={int}\r\nid - id of the user (required)\r\n\r\nFields:\r\n\"email\" - string\r\n\"first_name\" - string, required\r\n\"last_name\" - string, required\r\n\"type\" - enum(patient/doctor), required\r\n\"workplace_id\" - int, Won't be set if the user is patient\r\n\r\nThe request will update the following user"
+			},
+			"response": []
+		},
+		{
+			"name": "Update hospital",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Sveta Sofia\",\r\n    \"address\": \"Sofia\",\r\n    \"phone\": \"087236\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/credoweb-api/api/hospital/update_hospital?id={int}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"credoweb-api",
+						"api",
+						"hospital",
+						"update_hospital"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "{int}"
+						}
+					]
+				},
+				"description": "PUT reqest with URL: /api/hospital/update_hospital?id={int}\r\nid - hospital_id (required)\r\n\r\nFields:\r\n\"name\" - string, required\r\n\"address\" - string, required\r\n\"phone\" - string, required\r\n\r\nThe request will update the following hospital"
+			},
+			"response": []
+		},
+		{
+			"name": "Create hospital",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Sveta Sofia\",\r\n    \"address\": \"Sofia\",\r\n    \"phone\": \"087236123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/credoweb-api/api/hospital/create_hospital",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"credoweb-api",
+						"api",
+						"hospital",
+						"create_hospital"
+					]
+				},
+				"description": "POST request with URL: /api/hospital/create_hospital\r\nFields:\r\n\"name\" - string, required\r\n\"address\" - string, required\r\n\"phone\" - string, required\r\n\r\nThe request will create a new hospital record."
+			},
+			"response": []
+		},
+		{
+			"name": "Create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/credoweb-api/api/user/create_user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"credoweb-api",
+						"api",
+						"user",
+						"create_user"
+					]
+				},
+				"description": "POST request with URL: /api/user/create_user\r\nFields:\r\n\"email\" - string\r\n\"first_name\" - string, required\r\n\"last_name\" - string, required\r\n\"type\" - enum(patient/doctor), required\r\n\"workplace_id\" - int, Won't be set if the user is patient\r\n\r\nIt will create a new user record."
+			},
+			"response": []
+		}
+	]
+}
